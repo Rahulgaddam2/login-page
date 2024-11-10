@@ -1,0 +1,60 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="card" [class.dimmed]="isSignupVisible">
+          <div class="card-body">
+            <h3 class="text-center">Login</h3>
+            <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" formControlName="email" type="email" class="form-control" placeholder="Enter email" required>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" formControlName="password" type="password" class="form-control" placeholder="Enter password" required>
+              </div>
+              <div *ngIf="errorMessage" class="alert alert-danger">
+                {{ errorMessage }}
+              </div>
+              <br>
+              <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+            <p class="text-center mt-3">
+              Not a Member? <a href="#" (click)="showSignup($event)">Signup</a>
+            </p>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Signup Form -->
+      <div *ngIf="isSignupVisible" class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="text-center">Signup</h3>
+            <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+              <div class="form-group">
+                <label for="username">Full Name</label>
+                <input id="username" formControlName="username" type="text" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" formControlName="email" type="email" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" formControlName="password" type="password" class="form-control" required>
+              </div>
+              <div *ngIf="signupErrorMessage" class="alert alert-danger">
+                {{ signupErrorMessage }}
+              </div>
+              <br>
+              <button type="submit" class="btn btn-primary btn-block">Signup</button>
+            </form>
+            <p class="text-center mt-3">
+              Already a Member? <a href="#" (click)="hideSignup($event)">Login</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
